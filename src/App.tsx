@@ -6,7 +6,6 @@ import {NavLink, Outlet, Route, Routes, useParams} from "react-router-dom";
 const Profile = () => {
     const params = useParams<'*'>()
     const some = params['*']
-    console.log(some)
     return <div>{`profile -- value from url:${some}`}</div>
 }
 
@@ -14,8 +13,8 @@ function App() {
     return (
         <div className="App">
             <NavLink to={'/'}> main </NavLink>
-            <NavLink to={'/login'}> login </NavLink>
-            <NavLink to={'/profile'}> profile </NavLink>
+            <NavLink to={'/login'} className={({isActive}) => isActive ? 'act' : 'def' }> login </NavLink>
+            <NavLink to={'/profile'} style={(params) => ({color: params.isActive ? 'lime' : 'black' })}> profile </NavLink>
             <NavLink to={'/profile/1'}> profile 1</NavLink>
             <NavLink to={'/profile/2'}> profile 2</NavLink>
             {/*<NavLink to={'/profile/settings'}> settings </NavLink>*/}
