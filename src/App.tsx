@@ -1,12 +1,25 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
 import './App.css';
-import {NavLink, Outlet, Route, Routes, useParams} from "react-router-dom";
+import {NavLink, Outlet, Route, Routes, useParams, useSearchParams} from "react-router-dom";
 
 const Profile = () => {
+    const [searchParams, setSearchParams] = useSearchParams()
+    console.log(searchParams.get('name'))
+    console.log(Object.fromEntries(searchParams))
+
+    useEffect(() => {
+        console.log('research...')
+    }, [searchParams])
+
+
     const params = useParams<'*'>()
     const some = params['*']
-    return <div>{`profile -- value from url:${some}`}</div>
+    return <div>
+        profile
+        <button onClick={() => {setSearchParams({age: '32'})}}>add age</button>
+    </div>
+
 }
 
 function App() {
