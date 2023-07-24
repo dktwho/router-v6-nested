@@ -15,6 +15,15 @@ function App() {
             <Route path={'/*'} element={<div>404</div>}/>
             <Route path={'/'} element={<div>main</div>}/>
             <Route path={'/login'} element={<div>login</div>}/>
+            <Route path={'/profile/*'} element={(
+                <div>
+                    profile
+                    <Routes>
+                        <Route path={'/settings'} element={<div>settings</div>}/>
+                    </Routes>
+                </div>
+
+            )}/>
         </Routes>
     </div>
   );
